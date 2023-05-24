@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `autovrumvrum`.`Carro` (
   `Estado` VARCHAR(75) NOT NULL,
   `Fornecedor_ID` INT NOT NULL,
   `Compra_ID` INT NOT NULL,
-  `Venda_ID` INT NOT NULL,
+  `Venda_ID` INT NULL,
   PRIMARY KEY (`ID`),
   INDEX `fk_Carro_Fornecedor1_idx` (`Fornecedor_ID` ASC) VISIBLE,
   INDEX `fk_Carro_Compra1_idx` (`Compra_ID` ASC) VISIBLE,
