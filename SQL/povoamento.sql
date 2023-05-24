@@ -32,6 +32,18 @@ VALUES	('henrique', 'M', '2001-02-24', 189076543, 'viana'),
 		('telmo'   , 'M', '1999-02-20', 653123939, 'peoes');
 
 -- -----------------------------------------------------
+-- Povoamento da tabela `Carro`
+-- -----------------------------------------------------
+INSERT INTO Carro(Marca, Modelo, Ano, Kilometros, Cilindrada, Combustivel, Preco, Estado, Fornecedor_ID) 
+VALUES	('bmw', 'serie 4', 2019, 220202, 420, 'Gasoleo', 57000000.0, 'novo', 1),
+		('audi', 'a3', 2018, 200000, 300, 'Gasolina', 50000000.0, 'usado', 2),
+		('mercedes', 'classe a', 2017, 150000, 200, 'Gas', 40000000.0, 'usado', 3),
+		('ferrari', '911', 2000, 150230, 200, 'Gas', 400000.0, 'usado', 4),
+		('mercedes', 'amg gt', 2022, 0, 500, 'Hibrido', 1000000.0, 'bonito', 1),
+		('tesla', 'model x', 2018, 300000, 600, 'Eletrico', 200000000.0, 'feio', 2),
+		('seat', 'ibiza', 2002, 111111, 290, 'Gasolina', 5000.0, 'cringe', 3);
+
+-- -----------------------------------------------------
 -- Povoamento da tabela `Compra`
 -- -----------------------------------------------------
 INSERT INTO Compra(Data_Compra, Preco, Funcionario_ID, Fornecedor_ID, Carro_ID) 
@@ -51,20 +63,9 @@ VALUES	('2022-11-15', 1120.50, 1, 2, 1),
 		('2022-10-17', 4210.20, 3, 2, 3),
 		('2022-05-07', 5555.55, 5, 1, 4),
 		('2021-03-05', 3444.44, 1, 4, 5),
-		('2021-02-10', 7860.00, 4, 2, 6);
+		('2021-02-10', 7860.00, 4, 2, 6),
+        ('2023-03-11', 2748.00, 4, 2, 6);
 		
--- -----------------------------------------------------
--- Povoamento da tabela `Carro`
--- -----------------------------------------------------
-INSERT INTO Carro(Marca, Modelo, Ano, Kilometros, Cilindrada, Combustivel, Preco, Estado, Fornecedor_ID) 
-VALUES	('bmw', 'serie 4', 2019, 220202, 420, 'Gasoleo', 57000000.0, 'novo', 1),
-		('audi', 'a3', 2018, 200000, 300, 'Gasolina', 50000000.0, 'usado', 2),
-		('mercedes', 'classe a', 2017, 150000, 200, 'Gas', 40000000.0, 'usado', 3),
-		('ferrari', '911', 2000, 150230, 200, 'Gas', 400000.0, 'usado', 4),
-		('mercedes', 'amg gt', 2022, 0, 500, 'Hibrido', 1000000.0, 'bonito', 1),
-		('tesla', 'model x', 2018, 300000, 600, 'Eletrico', 200000000.0, 'feio', 2),
-		('seat', 'ibiza', 2002, 111111, 290, 'Gasolina', 5000.0, 'cringe', 3);
-
 -- -----------------------------------------------------
 -- Povoamento da tabela `TestDrive`
 -- -----------------------------------------------------

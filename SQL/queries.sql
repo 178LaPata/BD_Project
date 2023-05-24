@@ -1,7 +1,12 @@
 use autovrumvrum;
 
--- -------------------- QUERY 1 --------------------
--- Obter a lista de todos os carros disponíveis no stand.
+DROP PROCEDURE IF EXISTS carrosMaisVendidos;
 
-SELECT * FROM Carro 
+DELIMITER //
+CREATE PROCEDURE carrosMaisVendidos()
+    BEGIN
+        SELECT Carro.Marca, Carro.Modelo, COUNT(Venda.Carro_ID) AS 'Vendas' FROM Carro, Venda WHERE Carro.ID = Venda.Carro_ID GROUP BY Carro.ID ORDER BY Vendas DESC;
+    END // 
+DELIMITER //
 
+CALL carrosMaisVendidos();

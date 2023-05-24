@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `autovrumvrum`.`Compra` (
     FOREIGN KEY (`Fornecedor_ID`)
     REFERENCES `autovrumvrum`.`Fornecedor` (`ID`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Compra_Carro1`
     FOREIGN KEY (`Carro_ID`)
     REFERENCES `autovrumvrum`.`Carro` (`ID`)
