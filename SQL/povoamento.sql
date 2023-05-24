@@ -7,63 +7,63 @@ USE AutoVrumVrum;
 -- Povoamento da tabela `Fornecedor`
 -- -----------------------------------------------------
 INSERT INTO Fornecedor(Nome, Tipo, NIF) VALUES
-('matilde', 'Empresa', 123456789),
-('lara', 'Empresa', 345678912),
-('ricardo', 'Individual',567891234),
-('kiko', 'Individual',234567891);
+('matilde', 'Empresa'   , 123456789),
+('lara'   , 'Empresa'   , 345678912),
+('ricardo', 'Individual', 567891234),
+('kiko'   , 'Individual', 234567891);
 
 -- -----------------------------------------------------
 -- Povoamento da tabela `Funcionario`
 -- -----------------------------------------------------
 INSERT INTO Funcionario(Nome, Genero, Data_de_Nascimento, NIF, Tipo) VALUES
-( 'joao', 'M', '2002-09-27', 984727874, 'Vendedor'),
+( 'joao'   , 'M', '2002-09-27', 984727874, 'Vendedor' ),
 ( 'beatriz', 'F', '2002-08-30', 654321789, 'Comprador'),
-( 'bianca', 'F', '2002-03-05', 226655773, 'Vendedor'),
-( 'andre', 'M', '2002-11-14', 987654321, 'Comprador');
+( 'bianca' , 'F', '2002-03-05', 226655773, 'Vendedor' ),
+( 'andre'  , 'M', '2002-11-14', 987654321, 'Comprador');
 
 -- -----------------------------------------------------
 -- Povoamento da tabela `Cliente
 -- -----------------------------------------------------
 INSERT INTO Cliente(Nome, Genero, Data_de_Nascimento, NIF, Morada) 
-VALUES	('henrique', 'M', '2001-02-24', 189076543, 'praceta do vilar'),
-		('joana', 'F', '2000-10-13', 392912738, 'braga'),
-		('hugo', 'M', '2001-09-12', 475287345, 'porto'),
-		('maria', 'F', '2000-07-05', 382837534, 'gota'),
-		('telmo', 'M', '1999-02-20', 653123939, 'peoes');
+VALUES	('henrique', 'M', '2001-02-24', 189076543, 'viana'),
+		('joana'   , 'F', '2000-10-13', 392912738, 'braga'),
+		('hugo'    , 'M', '2001-09-12', 475287345, 'porto'),
+		('maria'   , 'F', '2000-07-05', 382837534, 'gota '),
+		('telmo'   , 'M', '1999-02-20', 653123939, 'peoes');
 
 -- -----------------------------------------------------
 -- Povoamento da tabela `Compra`
 -- -----------------------------------------------------
-INSERT INTO Compra(Data_Compra, Preco, Funcionario_ID, Fornecedor_ID) 
-VALUES	('2023-01-15', 120.50, 1, 2),
-		('2022-06-20', 20.30, 2, 3),
-		('2022-05-17', 10.20, 3, 2),
-		('2022-04-07', 55.55, 4, 1),
-		('2022-03-05', 44.44, 1, 4),
-		('2022-02-10', 60.00, 4, 2);
+INSERT INTO Compra(Data_Compra, Preco, Funcionario_ID, Fornecedor_ID, Carro_ID) 
+VALUES	('2023-01-15', 120.50, 1, 2, 1),
+		('2022-06-20',  20.30, 2, 3, 2),
+		('2022-05-17',  10.20, 3, 2, 3),
+		('2022-04-07',  55.55, 4, 1, 4),
+		('2022-03-05',  44.44, 1, 4, 5),
+		('2022-02-10',  60.00, 4, 2, 6);
 
 -- -----------------------------------------------------
 -- Povoamento da tabela `Venda`
 -- -----------------------------------------------------
-INSERT INTO Venda(Data_Venda, Preco, Cliente_ID, Funcionario_ID) 
-VALUES	('2022-11-15', 1120.50, 1, 2),
-		('2022-12-20', 2120.30, 2, 3),
-		('2022-10-17', 4210.20, 3, 2),
-		('2022-05-07', 5555.55, 5, 1),
-		('2021-03-05', 3444.44, 1, 4),
-		('2021-02-10', 7860.00, 4, 2);
+INSERT INTO Venda(Data_Venda, Preco, Cliente_ID, Funcionario_ID, Carro_ID) 
+VALUES	('2022-11-15', 1120.50, 1, 2, 1),
+		('2022-12-20', 2120.30, 2, 3, 2),
+		('2022-10-17', 4210.20, 3, 2, 3),
+		('2022-05-07', 5555.55, 5, 1, 4),
+		('2021-03-05', 3444.44, 1, 4, 5),
+		('2021-02-10', 7860.00, 4, 2, 6);
 		
 -- -----------------------------------------------------
 -- Povoamento da tabela `Carro`
 -- -----------------------------------------------------
-INSERT INTO Carro(Marca, Modelo, Ano, Kilometros, Cilindrada, Combustivel, Preco, Estado, Fornecedor_ID, Compra_ID, Venda_ID) 
-VALUES	('bmw', 'serie 4', 2019, 220202, 420, 'Gasoleo', 57000000.0, 'novo', 1, 1, 1),
-		('audi', 'a3', 2018, 200000, 300, 'Gasolina', 50000000.0, 'usado', 2, 2, 2),
-		('mercedes', 'classe a', 2017, 150000, 200, 'Gas', 40000000.0, 'usado', 3, 3, 3),
-		('ferrari', '911', 2000, 150230, 200, 'Gas', 400000.0, 'usado', 4, 4, 4),
-		('mercedes', 'amg gt', 2022, 0, 500, 'Hibrido', 1000000.0, 'bonito', 1, 5, 5),
-		('tesla', 'model x', 2018, 300000, 600, 'Eletrico', 200000000.0, 'feio', 2, 6, 6),
-		('seat', 'ibiza', 2002, 111111, 290, 'Gasolina', 5000.0, 'cringe', 3, 1, 2);
+INSERT INTO Carro(Marca, Modelo, Ano, Kilometros, Cilindrada, Combustivel, Preco, Estado, Fornecedor_ID) 
+VALUES	('bmw', 'serie 4', 2019, 220202, 420, 'Gasoleo', 57000000.0, 'novo', 1),
+		('audi', 'a3', 2018, 200000, 300, 'Gasolina', 50000000.0, 'usado', 2),
+		('mercedes', 'classe a', 2017, 150000, 200, 'Gas', 40000000.0, 'usado', 3),
+		('ferrari', '911', 2000, 150230, 200, 'Gas', 400000.0, 'usado', 4),
+		('mercedes', 'amg gt', 2022, 0, 500, 'Hibrido', 1000000.0, 'bonito', 1),
+		('tesla', 'model x', 2018, 300000, 600, 'Eletrico', 200000000.0, 'feio', 2),
+		('seat', 'ibiza', 2002, 111111, 290, 'Gasolina', 5000.0, 'cringe', 3);
 
 -- -----------------------------------------------------
 -- Povoamento da tabela `TestDrive`

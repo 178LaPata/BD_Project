@@ -73,7 +73,7 @@ CREATE PROCEDURE insere_cliente (IN Nome VARCHAR(75), IN Genero VARCHAR(1) , IN 
 END //
 
 DELIMITER //
-CREATE PROCEDURE insere_compra (IN Data_Compra DATE, IN Preco DOUBLE, IN Funcionario_ID INT, IN Fornecedor_ID INT)
+CREATE PROCEDURE insere_compra (IN Data_Compra DATE, IN Preco DOUBLE, IN Funcionario_ID INT, IN Fornecedor_ID INT, IN Carro_ID INT)
 	BEGIN
 		DECLARE exit handler for SQLEXCEPTION
 			BEGIN
@@ -90,14 +90,14 @@ CREATE PROCEDURE insere_compra (IN Data_Compra DATE, IN Preco DOUBLE, IN Funcion
 			END;
 		START TRANSACTION;
 			INSERT INTO Compra
-				(Data_Compra, Preco, Funcionario_ID, Fornecedor_ID)
+				(Data_Compra, Preco, Funcionario_ID, Fornecedor_ID, Carro_ID)
 				VALUES
-				(Data_Compra, Preco, Funcionario_ID, Fornecedor_ID);
+				(Data_Compra, Preco, Funcionario_ID, Fornecedor_ID, Carro_ID);
 		COMMIT;
 END //
 
 DELIMITER //
-CREATE PROCEDURE  insere_venda (IN Data_Venda DATE, IN Preco DOUBLE, IN Cliente_ID INT, IN Funcionario_ID INT)
+CREATE PROCEDURE  insere_venda (IN Data_Venda DATE, IN Preco DOUBLE, IN Cliente_ID INT, IN Funcionario_ID INT, IN Carro_ID INT)
 	BEGIN
 		DECLARE exit handler for SQLEXCEPTION
 			BEGIN
@@ -114,14 +114,14 @@ CREATE PROCEDURE  insere_venda (IN Data_Venda DATE, IN Preco DOUBLE, IN Cliente_
 			END;
 		START TRANSACTION;
 			INSERT INTO Venda
-				(Data_Venda, Preco, Cliente_ID, Funcionario_ID)
+				(Data_Venda, Preco, Cliente_ID, Funcionario_ID, Carro_ID)
 				VALUES
-				(Data_Venda, Preco, Cliente_ID, Funcionario_ID);
+				(Data_Venda, Preco, Cliente_ID, Funcionario_ID, Carro_ID);
 		COMMIT;
 END //
 
 DELIMITER //
-CREATE PROCEDURE insere_carro (IN Marca VARCHAR(50), IN Modelo VARCHAR(50), IN Ano INT, IN Kilometros INT, IN Cilindrada INT, IN Combustivel ENUM('Gasolina', 'Gasoleo', 'Hibrido', 'Eletrico', 'Gas'), IN Preco DOUBLE, IN Estado VARCHAR(75), IN Fornecedor_ID INT, IN Compra_ID INT, IN Venda_ID INT)
+CREATE PROCEDURE insere_carro (IN Marca VARCHAR(50), IN Modelo VARCHAR(50), IN Ano INT, IN Kilometros INT, IN Cilindrada INT, IN Combustivel ENUM('Gasolina', 'Gasoleo', 'Hibrido', 'Eletrico', 'Gas'), IN Preco DOUBLE, IN Estado VARCHAR(75), IN Fornecedor_ID INT)
 	BEGIN
 		DECLARE exit handler for SQLEXCEPTION
 			BEGIN
@@ -138,9 +138,9 @@ CREATE PROCEDURE insere_carro (IN Marca VARCHAR(50), IN Modelo VARCHAR(50), IN A
 			END;
 		START TRANSACTION;
 			INSERT INTO Carro
-				(Marca, Modelo, Ano, Kilometros, Cilindrada, Combustivel, Preco, Estado, Fornecedor_ID, Compra_ID, Venda_ID)
+				(Marca, Modelo, Ano, Kilometros, Cilindrada, Combustivel, Preco, Estado, Fornecedor_ID)
 				VALUES
-				(Marca, Modelo, Ano, Kilometros, Cilindrada, Combustivel, Preco, Estado, Fornecedor_ID, Compra_ID, Venda_ID);
+				(Marca, Modelo, Ano, Kilometros, Cilindrada, Combustivel, Preco, Estado, Fornecedor_ID);
 		COMMIT;
 END //
 

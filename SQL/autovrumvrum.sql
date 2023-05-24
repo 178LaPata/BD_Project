@@ -74,9 +74,11 @@ CREATE TABLE IF NOT EXISTS `autovrumvrum`.`Compra` (
   CONSTRAINT `chk_preco_compra` CHECK(`preco` >= 0.0),
   `Funcionario_ID` INT NOT NULL,
   `Fornecedor_ID` INT NOT NULL,
+  `Carro_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `fk_Compra_Funcionario1_idx` (`Funcionario_ID` ASC) VISIBLE,
   INDEX `fk_Compra_Fornecedor1_idx` (`Fornecedor_ID` ASC) VISIBLE,
+  INDEX `fk_Compra_Carro1_idx` (`Carro_ID` ASC) VISIBLE,
   CONSTRAINT `fk_Compra_Funcionario1`
     FOREIGN KEY (`Funcionario_ID`)
     REFERENCES `autovrumvrum`.`Funcionario` (`ID`)
@@ -85,6 +87,11 @@ CREATE TABLE IF NOT EXISTS `autovrumvrum`.`Compra` (
   CONSTRAINT `fk_Compra_Fornecedor1`
     FOREIGN KEY (`Fornecedor_ID`)
     REFERENCES `autovrumvrum`.`Fornecedor` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+  CONSTRAINT `fk_Compra_Carro1`
+    FOREIGN KEY (`Carro_ID`)
+    REFERENCES `autovrumvrum`.`Carro` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -100,9 +107,11 @@ CREATE TABLE IF NOT EXISTS `autovrumvrum`.`Venda` (
   CONSTRAINT `chk_preco_venda` CHECK(`preco` >= 0.0),
   `Cliente_ID` INT NOT NULL,
   `Funcionario_ID` INT NOT NULL,
+  `Carro_ID` INT NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `fk_Venda_Cliente1_idx` (`Cliente_ID` ASC) VISIBLE,
   INDEX `fk_Venda_Funcionario1_idx` (`Funcionario_ID` ASC) VISIBLE,
+  INDEX `fk_Venda_Carro1_idx` (`Carro_ID` ASC) VISIBLE,
   CONSTRAINT `fk_Venda_Cliente1`
     FOREIGN KEY (`Cliente_ID`)
     REFERENCES `autovrumvrum`.`Cliente` (`ID`)
@@ -112,9 +121,14 @@ CREATE TABLE IF NOT EXISTS `autovrumvrum`.`Venda` (
     FOREIGN KEY (`Funcionario_ID`)
     REFERENCES `autovrumvrum`.`Funcionario` (`ID`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Venda_Carro1`
+    FOREIGN KEY (`Carro_ID`)
+    REFERENCES `autovrumvrum`.`Carro` (`ID`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `autovrumvrum`.`Carro`
@@ -134,25 +148,11 @@ CREATE TABLE IF NOT EXISTS `autovrumvrum`.`Carro` (
   CONSTRAINT `chk_preco_carro` CHECK(`preco` >= 0.0),
   `Estado` VARCHAR(75) NOT NULL,
   `Fornecedor_ID` INT NOT NULL,
-  `Compra_ID` INT NOT NULL,
-  `Venda_ID` INT NULL,
   PRIMARY KEY (`ID`),
   INDEX `fk_Carro_Fornecedor1_idx` (`Fornecedor_ID` ASC) VISIBLE,
-  INDEX `fk_Carro_Compra1_idx` (`Compra_ID` ASC) VISIBLE,
-  INDEX `fk_Carro_Venda1_idx` (`Venda_ID` ASC) VISIBLE,
   CONSTRAINT `fk_Carro_Fornecedor1`
     FOREIGN KEY (`Fornecedor_ID`)
     REFERENCES `autovrumvrum`.`Fornecedor` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Carro_Compra1`
-    FOREIGN KEY (`Compra_ID`)
-    REFERENCES `autovrumvrum`.`Compra` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Carro_Venda1`
-    FOREIGN KEY (`Venda_ID`)
-    REFERENCES `autovrumvrum`.`Venda` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
