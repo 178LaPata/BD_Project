@@ -42,8 +42,7 @@ CREATE TABLE IF NOT EXISTS `autovrumvrum`.`Funcionario` (
   `Data_de_Nascimento` DATE NOT NULL,
   `NIF` INT NOT NULL,
   CONSTRAINT `chk_nif_fun` CHECK(LENGTH(nif)=9), 
-  `Tipo` VARCHAR(75) NOT NULL,
-  CONSTRAINT `chk_Tipo_fun` CHECK(Tipo = 'Vendedor' OR Tipo = 'Comprador'),
+  `Tipo` ENUM('Vendedor', 'Comprador') NOT NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
@@ -142,8 +141,7 @@ CREATE TABLE IF NOT EXISTS `autovrumvrum`.`Carro` (
   CONSTRAINT `chk_kilometros` CHECK(`kilometros` >= 0),
   `Cilindrada` INT NOT NULL,
   CONSTRAINT `chk_cilindrada` CHECK(`cilindrada` >= 0),
-  `Combustivel` VARCHAR(50) NOT NULL,
-  CONSTRAINT chk_combustivel CHECK(combustivel = 'Gasolina' OR combustivel = 'Gasoleo' OR combustivel = 'Hibrido' OR combustivel = 'Eletrico' OR combustivel = 'Gas'),
+  `Combustivel` ENUM('Gasolina', 'Gasoleo', 'Hibrido', 'Eletrico', 'Gas') NOT NULL,
   `Preco` DOUBLE NOT NULL,
   CONSTRAINT `chk_preco_carro` CHECK(`preco` >= 0.0),
   `Estado` VARCHAR(75) NOT NULL,
